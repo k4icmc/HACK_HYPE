@@ -171,6 +171,26 @@
             transform: translateY(-2px);
         }
 
+        .nav-item:hover {
+            color: #00ffff;
+            transform: translateY(-2px);
+        }
+
+        /* Adicionando estilos para o botão de feedback */
+        .feedback-btn {
+            background: linear-gradient(45deg, #00ffff, #0080ff);
+            border-radius: 20px;
+            padding: 8px 16px !important;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+        .feedback-btn:hover {
+            background: linear-gradient(45deg, #0080ff, #00ffff);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+            transform: translateY(-3px);
+        }
+
         /* Main Content */
         .main-content {
             margin-top: 100px;
@@ -1041,6 +1061,63 @@
             }
         }
 
+        /* Adicionando estilos para o div de vídeo de apresentação */
+        .presentation-video {
+            position: fixed;
+            top: 120px;
+            right: 20px;
+            z-index: 999;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00ffff;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .presentation-video:hover {
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            transform: scale(1.02);
+        }
+
+        .video-close-btn {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ff0040;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-close-btn:hover {
+            background: #ff3366;
+            transform: scale(1.1);
+        }
+
+        /* Responsividade para o vídeo de apresentação */
+        @media (max-width: 768px) {
+            .presentation-video {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                top: auto;
+            }
+            
+            .presentation-video iframe {
+                width: 250px;
+                height: 140px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -1060,9 +1137,25 @@
                 <li class="nav-item" onclick="showSection('sobre')">SOBRE</li>
                 <li class="nav-item" onclick="showSection('contato')">CONTATO</li>
                 <li class="nav-item" onclick="showSection('perguntas')">PERGUNTAS</li>
+                <!-- Adicionando botão de feedback no menu -->
+                <li class="nav-item " onclick="window.open('#', '_blank')">FEEDBACK</li>
             </ul>
         </nav>
     </header>
+
+    <!-- Adicionando div de vídeo de apresentação que acompanha o scroll -->
+    
+    <div class="presentation-video">
+        <iframe width="300" height="200" 
+                src="https://www.youtube.com/embed/SEU_VIDEO_ID_AQUI" 
+                title="Apresentação do Site HACK HYPE" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+        <button class="video-close-btn" onclick="togglePresentationVideo()">×</button>
+    </div>
+    
 
     <!-- Main Content -->
     <main class="main-content">
@@ -1475,6 +1568,24 @@
             document.body.style.overflow = 'auto';
         }
 
+        function togglePresentationVideo() {
+            const video = document.querySelector('.presentation-video');
+            if (video) {
+                video.style.display = video.style.display === 'none' ? 'block' : 'none';
+            }
+        }
+
+        function updateVideoPosition() {
+            const video = document.querySelector('.presentation-video');
+            if (video && window.innerWidth > 768) {
+                const scrollY = window.scrollY;
+                const newTop = Math.max(120, 120 + scrollY * 0.1);
+                video.style.top = newTop + 'px';
+            }
+        }
+
+        window.addEventListener('scroll', updateVideoPosition);
+
         // Close team popup when clicking outside
         window.addEventListener('click', function(event) {
             const popup = document.getElementById('teamPopup');
@@ -1665,5 +1776,3 @@
     </script>
 </body>
 </html>
-
-
