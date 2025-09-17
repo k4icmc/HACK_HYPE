@@ -617,26 +617,166 @@
             color: #00ffff;
         }
 
-        .faq-arrow.rotated {
-            transform: rotate(180deg);
+        /* Removendo estilos do accordion e adicionando estilos do popup */
+        /* Modal/Popup styles */
+        .faq-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
         }
 
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.05);
-            transition: all 0.4s ease;
+        .faq-modal-content {
+            background: linear-gradient(135deg, rgba(0, 20, 40, 0.95), rgba(0, 40, 80, 0.95));
+            /* Ajustando posicionamento para desktop e mobile */
+            margin: 15vh auto 0;
+            padding: 2rem;
+            border: 2px solid rgba(0, 255, 255, 0.5);
+            border-radius: 15px;
+            width: 85%;
+            max-width: 650px;
+            max-height: 65vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+            animation: modalSlideIn 0.3s ease-out;
+            scroll-behavior: smooth;
         }
 
-        .faq-answer.show {
-            max-height: 500px;
-            padding: 1.5rem;
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
-        .faq-answer p {
-            margin: 0;
-            line-height: 1.6;
-            color: #cccccc;
+        .faq-modal-header {
+            color: #00ffff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+            line-height: 1.4;
+        }
+
+        .faq-modal-body {
+            color: #ffffff;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            text-align: justify;
+            margin-bottom: 0;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            /* Limitando altura das respostas a 5 linhas com scroll */
+            max-height: 8.5rem; /* Aproximadamente 5 linhas (1.7 line-height * 5) */
+            overflow-y: auto;
+            padding-right: 10px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 255, 255, 0.5) rgba(0, 40, 80, 0.3);
+        }
+
+        /* Estilizando scrollbar para webkit browsers */
+        .faq-modal-body::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .faq-modal-body::-webkit-scrollbar-track {
+            background: rgba(0, 40, 80, 0.3);
+            border-radius: 3px;
+        }
+
+        .faq-modal-body::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 255, 0.5);
+            border-radius: 3px;
+        }
+
+        .faq-modal-body::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 255, 255, 0.7);
+        }
+
+        /* Reposicionando botão X para ficar sempre visível e acessível */
+        .faq-close {
+            position: fixed;
+            bottom: 12vh;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #00ffff;
+            font-size: 1.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 20, 40, 0.95);
+            border: 3px solid rgba(0, 255, 255, 0.6);
+            z-index: 1001;
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+        }
+
+        .faq-close:hover {
+            background: rgba(0, 255, 255, 0.2);
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 15px 35px rgba(0, 255, 255, 0.6);
+            border-color: rgba(0, 255, 255, 0.8);
+        }
+
+        /* Melhorando responsividade mobile */
+        @media (max-width: 768px) {
+            .faq-modal-content {
+                margin: 20vh auto 0;
+                width: 92%;
+                padding: 1.5rem;
+                max-height: 55vh;
+                border-radius: 12px;
+            }
+            
+            .faq-modal-header {
+                font-size: 1.1rem;
+                margin-bottom: 1.2rem;
+            }
+            
+            .faq-modal-body {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                /* Ajustando altura para mobile (5 linhas com line-height 1.6) */
+                max-height: 8rem;
+            }
+
+        }
+
+        /* Adicionando responsividade para telas muito pequenas */
+        @media (max-width: 480px) {
+            .faq-modal-content {
+                margin: 25vh auto 0;
+                width: 95%;
+                padding: 1.2rem;
+                max-height: 50vh;
+            }
+            
+            .faq-modal-header {
+                font-size: 1rem;
+                /* Continuando com o código existente */
+            }
+            
+            .faq-modal-body {
+                /* Mantendo altura limitada para telas pequenas */
+                max-height: 7.5rem;
+            }
+
         }
 
         /* Responsive */
@@ -727,10 +867,6 @@
                 font-size: 0.9rem;
             }
             
-            .faq-answer {
-                padding: 0.8rem;
-                font-size: 0.8rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1122,6 +1258,7 @@
         }
 
         /* Adicionando estilos para barra de contatos inferior */
+        /* Modificando barra de contatos para aparecer apenas no scroll */
         .contact-bar {
             position: fixed;
             bottom: 0;
@@ -1135,6 +1272,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+
+        .contact-bar.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .contact-icon {
@@ -1354,90 +1499,150 @@
         <!-- Perguntas Section -->
         <section id="perguntas" class="content-section">
             <div class="info-box">
-                <!-- Implementando sistema de FAQ expansível com botões clicáveis -->
+                <!-- Modificando sistema de FAQ para usar popups -->
                 <h2>Perguntas Frequentes</h2>
                 
                 <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFAQ(1)">
+                    <button class="faq-question" onclick="openFAQModal(1)">
                         <span>Qual a duração do curso e como é estruturado?</span>
-                        <span class="faq-arrow" id="arrow1">▼</span>
+                        <span class="faq-arrow">❓</span>
                     </button>
-                    <div class="faq-answer" id="answer1">
-                        <p>O curso tem duração de 4 anos (8 semestres) com carga horária total de 3.200 horas. É estruturado em ciclos: Básico (1º-2º semestre), Intermediário (3º-5º semestre) e Avançado (6º-8º semestre). Inclui estágio obrigatório de 400 horas e TCC (Trabalho de Conclusão de Curso).</p>
-                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFAQ(2)">
+                    <button class="faq-question" onclick="openFAQModal(2)">
                         <span>Quais são os pré-requisitos e processo seletivo?</span>
-                        <span class="faq-arrow" id="arrow2">▼</span>
+                        <span class="faq-arrow">❓</span>
                     </button>
-                    <div class="faq-answer" id="answer2">
-                        <p>Pré-requisitos: Ensino médio completo. O processo seletivo inclui prova de conhecimentos gerais, redação, e entrevista. Oferecemos também ingresso via ENEM com nota mínima de 500 pontos. Há bolsas de estudo para estudantes de baixa renda e programas de financiamento estudantil.</p>
-                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFAQ(3)">
+                    <button class="faq-question" onclick="openFAQModal(3)">
                         <span>O curso é reconhecido e qual a avaliação do MEC?</span>
-                        <span class="faq-arrow" id="arrow3">▼</span>
+                        <span class="faq-arrow">❓</span>
                     </button>
-                    <div class="faq-answer" id="answer3">
-                        <p>Sim, nosso curso possui reconhecimento do MEC com conceito 5 (nota máxima). Somos credenciados pelo INEP e participamos regularmente do ENADE. A instituição possui selo de qualidade ISO 9001 e é membro da Associação Brasileira de Mantenedoras de Ensino Superior (ABMES).</p>
-                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFAQ(4)">
+                    <button class="faq-question" onclick="openFAQModal(4)">
                         <span>Como funcionam os estágios e oportunidades de emprego?</span>
-                        <span class="faq-arrow" id="arrow4">▼</span>
+                        <span class="faq-arrow">❓</span>
                     </button>
-                    <div class="faq-answer" id="answer4">
-                        <p>Temos parcerias com mais de 200 empresas incluindo Google, Microsoft, IBM, Accenture, e startups locais. Oferecemos estágios remunerados a partir do 3º semestre, programa de trainee exclusivo, e centro de carreiras com orientação profissional. Taxa de empregabilidade: 95% em até 6 meses após formatura.</p>
-                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFAQ(5)">
+                    <button class="faq-question" onclick="openFAQModal(5)">
                         <span>Qual o perfil salarial e mercado de trabalho?</span>
-                        <span class="faq-arrow" id="arrow5">▼</span>
+                        <span class="faq-arrow">❓</span>
                     </button>
-                    <div class="faq-answer" id="answer5">
-                        <p>O mercado de TI cresce 15% ao ano no Brasil. Salários iniciais: R$ 3.500-5.000 (júnior), R$ 6.000-10.000 (pleno), R$ 12.000+ (sênior). Áreas em alta: Inteligência Artificial, Cybersecurity, Cloud Computing, DevOps. Possibilidade de trabalho remoto e internacional.</p>
-                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFAQ(6)">
+                    <button class="faq-question" onclick="openFAQModal(6)">
                         <span>Quais tecnologias e linguagens são ensinadas?</span>
-                        <span class="faq-arrow" id="arrow6">▼</span>
+                        <span class="faq-arrow">❓</span>
                     </button>
-                    <div class="faq-answer" id="answer6">
-                        <p>Linguagens: Java, Python, JavaScript, C#, SQL, HTML/CSS. Frameworks: React, Angular, Spring Boot, Django, .NET. Bancos: MySQL, PostgreSQL, MongoDB. Cloud: AWS, Azure, Google Cloud. Ferramentas: Git, Docker, Kubernetes, Jenkins. Metodologias: Scrum, Kanban, DevOps.</p>
-                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFAQ(7)">
+                    <button class="faq-question" onclick="openFAQModal(7)">
                         <span>Há possibilidade de intercâmbio e certificações?</span>
-                        <span class="faq-arrow" id="arrow7">▼</span>
+                        <span class="faq-arrow">❓</span>
                     </button>
-                    <div class="faq-answer" id="answer7">
-                        <p>Sim! Parcerias com universidades nos EUA, Canadá, Alemanha e Portugal. Programa de dupla diplomação disponível. Certificações oferecidas: AWS Cloud Practitioner, Microsoft Azure, Google Cloud, Oracle, Cisco, CompTIA. Preparação inclusa no currículo sem custo adicional.</p>
-                    </div>
                 </div>
 
                 <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFAQ(8)">
+                    <button class="faq-question" onclick="openFAQModal(8)">
                         <span>Como é a infraestrutura e recursos disponíveis?</span>
-                        <span class="faq-arrow" id="arrow8">▼</span>
+                        <span class="faq-arrow">❓</span>
                     </button>
-                    <div class="faq-answer" id="answer8">
-                        <p>Campus de 15.000m² com 12 laboratórios de informática, biblioteca com 50.000 volumes, auditórios para 500 pessoas, espaços maker, incubadora de startups, datacenter próprio, WiFi 6 em todo campus, e acesso gratuito a plataformas como GitHub Pro, JetBrains, Adobe Creative Suite.</p>
-                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- Adicionando modais para cada pergunta -->
+        <!-- FAQ Modals -->
+        <!-- Adicionando pergunta em cada modal -->
+        <div id="faqModal1" class="faq-modal">
+            <div class="faq-modal-content">
+                <div class="faq-modal-header">Qual a duração do curso e como é estruturado?</div>
+                <div class="faq-modal-body">
+                    O curso tem duração de 4 anos (8 semestres) com carga horária total de 3.200 horas. É estruturado em ciclos: Básico (1º-2º semestre), Intermediário (3º-5º semestre) e Avançado (6º-8º semestre). Inclui estágio obrigatório de 400 horas e TCC (Trabalho de Conclusão de Curso).
+                </div>
+                <span class="faq-close" onclick="closeFAQModal(1)">&times;</span>
+            </div>
+        </div>
+
+        <div id="faqModal2" class="faq-modal">
+            <div class="faq-modal-content">
+                <div class="faq-modal-header">Quais são os pré-requisitos e processo seletivo?</div>
+                <div class="faq-modal-body">
+                    Pré-requisitos: Ensino médio completo. O processo seletivo inclui prova de conhecimentos gerais, redação, e entrevista. Oferecemos também ingresso via ENEM com nota mínima de 500 pontos. Há bolsas de estudo para estudantes de baixa renda e programas de financiamento estudantil.
+                </div>
+                <span class="faq-close" onclick="closeFAQModal(2)">&times;</span>
+            </div>
+        </div>
+
+        <div id="faqModal3" class="faq-modal">
+            <div class="faq-modal-content">
+                <div class="faq-modal-header">O curso é reconhecido e qual a avaliação do MEC?</div>
+                <div class="faq-modal-body">
+                    Sim, nosso curso possui reconhecimento do MEC com conceito 5 (nota máxima). Somos credenciados pelo INEP e participamos regularmente do ENADE. A instituição possui selo de qualidade ISO 9001 e é membro da Associação Brasileira de Mantenedoras de Ensino Superior (ABMES).
+                </div>
+                <span class="faq-close" onclick="closeFAQModal(3)">&times;</span>
+            </div>
+        </div>
+
+        <div id="faqModal4" class="faq-modal">
+            <div class="faq-modal-content">
+                <div class="faq-modal-header">Como funcionam os estágios e oportunidades de emprego?</div>
+                <div class="faq-modal-body">
+                    Temos parcerias com mais de 200 empresas incluindo Google, Microsoft, IBM, Accenture, e startups locais. Oferecemos estágios remunerados a partir do 3º semestre, programa de trainee exclusivo, e centro de carreiras com orientação profissional. Taxa de empregabilidade: 95% em até 6 meses após formatura.
+                </div>
+                <span class="faq-close" onclick="closeFAQModal(4)">&times;</span>
+            </div>
+        </div>
+
+        <div id="faqModal5" class="faq-modal">
+            <div class="faq-modal-content">
+                <div class="faq-modal-header">Qual o perfil salarial e mercado de trabalho?</div>
+                <div class="faq-modal-body">
+                    O mercado de TI cresce 15% ao ano no Brasil. Salários iniciais: R$ 3.500-5.000 (júnior), R$ 6.000-10.000 (pleno), R$ 12.000+ (sênior). Áreas em alta: Inteligência Artificial, Cybersecurity, Cloud Computing, DevOps. Possibilidade de trabalho remoto e internacional.
+                </div>
+                <span class="faq-close" onclick="closeFAQModal(5)">&times;</span>
+            </div>
+        </div>
+
+        <div id="faqModal6" class="faq-modal">
+            <div class="faq-modal-content">
+                <div class="faq-modal-header">Quais tecnologias e linguagens são ensinadas?</div>
+                <div class="faq-modal-body">
+                    Linguagens: Java, Python, JavaScript, C#, SQL, HTML/CSS. Frameworks: React, Angular, Spring Boot, Django, .NET. Bancos: MySQL, PostgreSQL, MongoDB. Cloud: AWS, Azure, Google Cloud. Ferramentas: Git, Docker, Kubernetes, Jenkins. Metodologias: Scrum, Kanban, DevOps.
+                </div>
+                <span class="faq-close" onclick="closeFAQModal(6)">&times;</span>
+            </div>
+        </div>
+
+        <div id="faqModal7" class="faq-modal">
+            <div class="faq-modal-content">
+                <div class="faq-modal-header">Há possibilidade de intercâmbio e certificações?</div>
+                <div class="faq-modal-body">
+                    Sim! Parcerias com universidades nos EUA, Canadá, Alemanha e Portugal. Programa de dupla diplomação disponível. Certificações oferecidas: AWS Cloud Practitioner, Microsoft Azure, Google Cloud, Oracle, Cisco, CompTIA. Preparação inclusa no currículo sem custo adicional.
+                </div>
+                <span class="faq-close" onclick="closeFAQModal(7)">&times;</span>
+            </div>
+        </div>
+
+        <div id="faqModal8" class="faq-modal">
+            <div class="faq-modal-content">
+                <div class="faq-modal-header">Como é a infraestrutura e recursos disponíveis?</div>
+                <div class="faq-modal-body">
+                    Campus de 15.000m² com 12 laboratórios de informática, biblioteca com 50.000 volumes, auditórios para 500 pessoas, espaços maker, incubadora de startups, datacenter próprio, WiFi 6 em todo campus, e acesso gratuito a plataformas como GitHub Pro, JetBrains, Adobe Creative Suite.
+                </div>
+                <span class="faq-close" onclick="closeFAQModal(8)">&times;</span>
+            </div>
+        </div>
+
     </main>
 
     <!-- Adicionando barra de contatos inferior com ícone de usuário -->
@@ -1607,6 +1812,20 @@
     </div>
 
     <script>
+        window.addEventListener('scroll', function() {
+            const contactBar = document.querySelector('.contact-bar');
+            const scrollHeight = document.documentElement.scrollHeight;
+            const scrollTop = document.documentElement.scrollTop;
+            const clientHeight = document.documentElement.clientHeight;
+            
+            // Mostrar botão quando estiver próximo do final da página (80% do scroll)
+            if (scrollTop + clientHeight >= scrollHeight * 0.8) {
+                contactBar.classList.add('visible');
+            } else {
+                contactBar.classList.remove('visible');
+            }
+        });
+
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
             const particleCount = 50;
@@ -1707,6 +1926,39 @@
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeTeamPopup();
+            }
+        });
+
+        function openFAQModal(faqNumber) {
+            const modal = document.getElementById(`faqModal${faqNumber}`);
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Previne scroll do body
+        }
+
+        function closeFAQModal(faqNumber) {
+            const modal = document.getElementById(`faqModal${faqNumber}`);
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restaura scroll do body
+        }
+
+        // Fechar modal clicando fora dele
+        window.onclick = function(event) {
+            if (event.target.classList.contains('faq-modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Fechar modal com tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.faq-modal');
+                modals.forEach(modal => {
+                    if (modal.style.display === 'block') {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
             }
         });
 
