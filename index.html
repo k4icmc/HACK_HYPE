@@ -1202,9 +1202,10 @@
         /* Adicionando estilos para o div de vídeo de apresentação */
         /* Movendo vídeo de apresentação para o lado esquerdo */
         .presentation-video {
-            position: fixed;
+            /* Mudando de position fixed para absolute para não acompanhar scroll */
+            position: absolute;
             top: 120px;
-            left: 20px; /* Mudado de right para left */
+            left: 20px;
             z-index: 999;
             background: rgba(0, 0, 0, 0.9);
             border: 2px solid #00ffff;
@@ -1212,11 +1213,24 @@
             padding: 10px;
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
             transition: all 0.3s ease;
+            /* Adicionando cursor pointer para indicar que é arrastável */
+            cursor: move;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
         .presentation-video:hover {
             box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
             transform: scale(1.02);
+        }
+
+        /* Adicionando estado de arraste */
+        .presentation-video.dragging {
+            transition: none;
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.7);
         }
 
         .video-close-btn {
@@ -1245,10 +1259,10 @@
         /* Responsividade para o vídeo de apresentação */
         @media (max-width: 768px) {
             .presentation-video {
-                position: fixed;
-                bottom: 80px; /* Ajustado para não sobrepor a barra de contatos */
+                /* Mantendo posição consistente no mobile também no canto superior esquerdo */
+                position: absolute;
+                top: 120px;
                 left: 20px;
-                top: auto;
             }
             
             .presentation-video iframe {
@@ -1327,10 +1341,10 @@
         /* Responsividade para mobile */
         @media (max-width: 768px) {
             .presentation-video {
-                position: fixed;
-                bottom: 80px; /* Ajustado para não sobrepor a barra de contatos */
+                /* Removendo posicionamento duplicado e mantendo consistência */
+                position: absolute;
+                top: 120px;
                 left: 20px;
-                top: auto;
             }
             
             .presentation-video iframe {
@@ -1365,31 +1379,14 @@
                 <li class="nav-item active" onclick="showSection('home')">HOME</li>
                 <!-- Removidos botões SOBRE e CONTATO do menu -->
                 <li class="nav-item" onclick="showSection('perguntas')">PERGUNTAS</li>
-
-
-
-
-
-                
                 <!-- Botão feedback mantido conforme solicitado -->
-                 <li class="nav-item" onclick="window.open('https://ayadlljq.formester.com/f/srOu3CGD7', '_blank')">FEEDBACK</li> 
-
-
-
-
-
-                
+                <!-- <li class="nav-item" onclick="window.open('https://ayadlljq.formester.com/f/srOu3CGD7', '_blank')">FEEDBACK</li> -->
             </ul>
         </nav>
     </header>
 
-
-
-
-
-    
     <!-- Video movido para o lado esquerdo -->
-    
+    <!--
     <div class="presentation-video">
         <iframe width="300" height="200" 
                 src="https://www.youtube.com/embed/SEU_VIDEO_ID_AQUI" 
@@ -1400,14 +1397,9 @@
         </iframe>
         <button class="video-close-btn" onclick="togglePresentationVideo()">×</button>
     </div>
-
+    -->
     
 
-
-
-
-
-    
     <!-- Main Content -->
     <main class="main-content">
         <!-- Home Section -->
@@ -1918,23 +1910,17 @@
             document.body.style.overflow = 'auto';
         }
 
-        function togglePresentationVideo() {
-            const video = document.querySelector('.presentation-video');
-            if (video) {
-                video.style.display = video.style.display === 'none' ? 'block' : 'none';
-            }
-        }
+        /* Removendo função que fazia o vídeo acompanhar o scroll */
+        // function updateVideoPosition() {
+        //     const video = document.querySelector('.presentation-video');
+        //     if (video && window.innerWidth > 768) {
+        //         const scrollY = window.scrollY;
+        //         const newTop = Math.max(120, 120 + scrollY * 0.1);
+        //         video.style.top = newTop + 'px';
+        //     }
+        // }
 
-        function updateVideoPosition() {
-            const video = document.querySelector('.presentation-video');
-            if (video && window.innerWidth > 768) {
-                const scrollY = window.scrollY;
-                const newTop = Math.max(120, 120 + scrollY * 0.1);
-                video.style.top = newTop + 'px';
-            }
-        }
-
-        window.addEventListener('scroll', updateVideoPosition);
+        // window.addEventListener('scroll', updateVideoPosition);
 
         // Close team popup when clicking outside
         window.addEventListener('click', function(event) {
@@ -2156,7 +2142,118 @@
                 }
             }
         });
+
+        /* Adicionando funcionalidade de arrastar e soltar para o vídeo */
+        let isDragging = false;
+        let dragOffset = { x: 0, y: 0 };
+        let currentVideo = null;
+
+        function initializeDragVideo() {
+            const video = document.querySelector('.presentation-video');
+            if (!video) return;
+
+            // Eventos de mouse para desktop
+            video.addEventListener('mousedown', startDrag);
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', endDrag);
+
+            // Eventos de touch para mobile
+            video.addEventListener('touchstart', startDragTouch, { passive: false });
+            document.addEventListener('touchmove', dragTouch, { passive: false });
+            document.addEventListener('touchend', endDragTouch);
+        }
+
+        function startDrag(e) {
+            isDragging = true;
+            currentVideo = e.target.closest('.presentation-video');
+            if (!currentVideo) return;
+
+            currentVideo.classList.add('dragging');
+            const rect = currentVideo.getBoundingClientRect();
+            dragOffset.x = e.clientX - rect.left;
+            dragOffset.y = e.clientY - rect.top;
+            e.preventDefault();
+        }
+
+        function drag(e) {
+            if (!isDragging || !currentVideo) return;
+
+            const x = e.clientX - dragOffset.x;
+            const y = e.clientY - dragOffset.y;
+
+            // Limitando o movimento dentro da viewport
+            const maxX = window.innerWidth - currentVideo.offsetWidth;
+            const maxY = window.innerHeight - currentVideo.offsetHeight;
+
+            const constrainedX = Math.max(0, Math.min(x, maxX));
+            const constrainedY = Math.max(0, Math.min(y, maxY));
+
+            currentVideo.style.left = constrainedX + 'px';
+            currentVideo.style.top = constrainedY + 'px';
+        }
+
+        function endDrag() {
+            if (currentVideo) {
+                currentVideo.classList.remove('dragging');
+            }
+            isDragging = false;
+            currentVideo = null;
+        }
+
+        // Funções para touch (mobile)
+        function startDragTouch(e) {
+            isDragging = true;
+            currentVideo = e.target.closest('.presentation-video');
+            if (!currentVideo) return;
+
+            currentVideo.classList.add('dragging');
+            const rect = currentVideo.getBoundingClientRect();
+            const touch = e.touches[0];
+            dragOffset.x = touch.clientX - rect.left;
+            dragOffset.y = touch.clientY - rect.top;
+            e.preventDefault();
+        }
+
+        function dragTouch(e) {
+            if (!isDragging || !currentVideo) return;
+
+            const touch = e.touches[0];
+            const x = touch.clientX - dragOffset.x;
+            const y = touch.clientY - dragOffset.y;
+
+            // Limitando o movimento dentro da viewport
+            const maxX = window.innerWidth - currentVideo.offsetWidth;
+            const maxY = window.innerHeight - currentVideo.offsetHeight;
+
+            const constrainedX = Math.max(0, Math.min(x, maxX));
+            const constrainedY = Math.max(0, Math.min(y, maxY));
+
+            currentVideo.style.left = constrainedX + 'px';
+            currentVideo.style.top = constrainedY + 'px';
+            e.preventDefault();
+        }
+
+        function endDragTouch() {
+            if (currentVideo) {
+                currentVideo.classList.remove('dragging');
+            }
+            isDragging = false;
+            currentVideo = null;
+        }
+
+        function togglePresentationVideo() {
+            const video = document.querySelector('.presentation-video');
+            if (video) {
+                video.style.display = video.style.display === 'none' ? 'block' : 'none';
+                if (video.style.display !== 'none') {
+                    setTimeout(initializeDragVideo, 100);
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDragVideo();
+        });
     </script>
 </body>
 </html>
-
