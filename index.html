@@ -1063,10 +1063,11 @@
         }
 
         /* Adicionando estilos para o div de vídeo de apresentação */
+        /* Movendo vídeo de apresentação para o lado esquerdo */
         .presentation-video {
             position: fixed;
             top: 120px;
-            right: 20px;
+            left: 20px; /* Mudado de right para left */
             z-index: 999;
             background: rgba(0, 0, 0, 0.9);
             border: 2px solid #00ffff;
@@ -1108,14 +1109,95 @@
         @media (max-width: 768px) {
             .presentation-video {
                 position: fixed;
-                bottom: 20px;
-                right: 20px;
+                bottom: 80px; /* Ajustado para não sobrepor a barra de contatos */
+                left: 20px;
                 top: auto;
             }
             
             .presentation-video iframe {
                 width: 250px;
                 height: 140px;
+            }
+        }
+
+        /* Adicionando estilos para barra de contatos inferior */
+        .contact-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+            padding: 15px 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-icon {
+            background: linear-gradient(45deg, #00ffff, #0080ff);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: #000;
+            font-size: 20px;
+        }
+
+        .contact-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        /* Adicionando estilos para seção sobre integrada */
+        .about-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .about-section h2 {
+            color: #00ffff;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .about-section p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* Responsividade para mobile */
+        @media (max-width: 768px) {
+            .presentation-video {
+                position: fixed;
+                bottom: 80px; /* Ajustado para não sobrepor a barra de contatos */
+                left: 20px;
+                top: auto;
+            }
+            
+            .presentation-video iframe {
+                width: 250px;
+                height: 140px;
+            }
+
+            .about-section {
+                padding: 1rem;
+            }
+
+            .about-section h2 {
+                font-size: 1.5rem;
             }
         }
 
@@ -1135,32 +1217,16 @@
             </div>
             <ul class="nav-menu">
                 <li class="nav-item active" onclick="showSection('home')">HOME</li>
-                <li class="nav-item" onclick="showSection('sobre')">SOBRE</li>
-                <li class="nav-item" onclick="showSection('contato')">CONTATO</li>
+                <!-- Removidos botões SOBRE e CONTATO do menu -->
                 <li class="nav-item" onclick="showSection('perguntas')">PERGUNTAS</li>
-
-
-
-
-
-
-                
-
-                <!-- Adicionando botão de feedback no menu -->
-            <!-- <li class="nav-item " onclick="window.open('https://ayadlljq.formester.com/f/srOu3CGD7', '_blank')">FEEDBACK</li> -->
-
-
-
-
-
-
-                
+                <!-- Botão feedback mantido conforme solicitado -->
+                <!-- <li class="nav-item" onclick="window.open('https://ayadlljq.formester.com/f/srOu3CGD7', '_blank')">FEEDBACK</li> -->
             </ul>
         </nav>
     </header>
 
-    <!-- video de apresentação do site-->
-    
+    <!-- Video movido para o lado esquerdo -->
+    <!--
     <div class="presentation-video">
         <iframe width="300" height="200" 
                 src="https://www.youtube.com/embed/SEU_VIDEO_ID_AQUI" 
@@ -1171,7 +1237,7 @@
         </iframe>
         <button class="video-close-btn" onclick="togglePresentationVideo()">×</button>
     </div>
-    
+    -->
     
 
     <!-- Main Content -->
@@ -1179,8 +1245,21 @@
         <!-- Home Section -->
         <section id="home" class="content-section active">
             <div class="hero">
-                <h1>HACK HYPE</h1>
-                <p>Hackeando Limites, Hypando Possibilidades!</p>
+            <div class="hero-content">
+                <h1 class="hero-title">HACK HYPE</h1>
+                <p class="hero-subtitle">Hackeando Limites, Hypando Possibilidades!</p>
+                
+                <!-- Adicionando seção sobre integrada abaixo da frase principal -->
+                <div class="about-section">
+                    <h2>Sobre</h2>
+                    <p><strong>Formação Completa e Inovadora:</strong> O curso de Sistemas de Informação forma profissionais capazes de analisar, projetar, implementar e gerenciar sistemas de informação em organizações de diversos setores. Nossa abordagem combina conhecimentos técnicos sólidos com visão estratégica de negócios.</p>
+                    
+                    <p><strong>Grade Curricular Abrangente:</strong> O currículo inclui disciplinas como Programação (Java, Python, JavaScript), Banco de Dados, Engenharia de Software, Redes de Computadores, Segurança da Informação, Gestão de Projetos, Análise de Sistemas, Inteligência Artificial, Machine Learning e muito mais.</p>
+                    
+                    <p><strong>Metodologia de Ensino:</strong> Utilizamos metodologias ativas de aprendizagem, projetos práticos em parceria com empresas, laboratórios equipados com tecnologia de ponta, e um corpo docente formado por mestres e doutores com experiência no mercado.</p>
+                    
+                    <p><strong>Áreas de Atuação:</strong> Nossos egressos trabalham como Desenvolvedores Full Stack, Analistas de Sistemas, Gerentes de Projetos de TI, Consultores em Tecnologia, Arquitetos de Software, Especialistas em Segurança da Informação, Analistas de Dados, Product Owners, e muito mais.</p>
+                </div>
             </div>
 
             <!-- Shortcuts Section -->
@@ -1359,6 +1438,13 @@
             </div>
         </section>
     </main>
+
+    <!-- Adicionando barra de contatos inferior com ícone de usuário -->
+    <div class="contact-bar">
+        <button class="contact-icon" onclick="showSection('contato')" title="Contatos">
+            👤
+        </button>
+    </div>
 
     <!-- Adding member modal -->
     <div class="member-modal" id="memberModal">
@@ -1797,11 +1883,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
