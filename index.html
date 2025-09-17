@@ -68,8 +68,8 @@
             z-index: 1000;
             padding: 1rem 2rem;
             border-bottom: 2px solid #00ffff;
-            /* Adicionando animação de entrada do header */
-            animation: slideInFromTop 0.8s ease-out;
+            /* Reduzindo tempo de animação do header de 0.8s para 0.3s */
+            animation: slideInFromTop 0.3s ease-out;
         }
 
         @keyframes slideInFromTop {
@@ -209,7 +209,8 @@
 
         .content-section.active {
             display: block;
-            animation: fadeInUp 0.6s ease;
+            /* Reduzindo tempo de animação de 0.6s para 0.3s */
+            animation: fadeInUp 0.3s ease;
         }
 
         @keyframes fadeInUp {
@@ -236,8 +237,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            /* Adicionando animação de fade in simples */
-            animation: fadeInTitle 1.2s ease-out;
+            /* Reduzindo tempo de animação do título de 1.2s para 0.4s */
+            animation: fadeInTitle 0.4s ease-out;
         }
 
         @keyframes fadeInTitle {
@@ -255,8 +256,8 @@
             font-size: 1.3rem;
             margin-bottom: 2rem;
             color: #cccccc;
-            /* Adicionando animação de fade in com delay */
-            animation: fadeInUp 1s ease 1.5s both;
+            /* Reduzindo delay de 1.5s para 0.2s e duração de 1s para 0.5s */
+            animation: fadeInUp 0.5s ease 0.2s both;
         }
 
         /* Nosso Time Section */
@@ -1641,7 +1642,8 @@
             elements.forEach(element => {
                 element.style.opacity = '0';
                 element.style.transform = 'translateY(20px)';
-                element.style.transition = 'all 0.4s ease';
+                /* Reduzindo tempo de transição de 0.4s para 0.2s */
+                element.style.transition = 'all 0.2s ease';
             });
 
             const observer = new IntersectionObserver((entries) => {
