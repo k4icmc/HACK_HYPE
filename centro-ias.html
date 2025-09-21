@@ -60,45 +60,72 @@
         }
 
         .nav-container {
+            /* Alterando layout para centralizar logo e posicionar botão embaixo */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             max-width: 1200px;
             margin: 0 auto;
+            gap: 1rem;
+        }
+
+        .logo {
+            /* Ajustando tamanho da logo para melhor visualização */
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            justify-content: center;
+            border: 4px solid #00ffff;
+            animation: logoGlow 3s ease-in-out infinite alternate;
         }
 
         .logo img {
-            width: 100px;
-            height: 105px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-radius: 19px;
+            border-radius: 10px;
             filter: drop-shadow(0 0 3px #00ffff);
         }
 
         .back-btn {
+            /* Padronizando estilo do botão de voltar */
+            padding: 1rem 2rem;
             background: linear-gradient(45deg, #00ffff, #0080ff);
             color: #000;
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
             text-decoration: none;
-            display: inline-block;
+            border-radius: 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 1.1rem;
         }
 
         .back-btn:hover {
+            background: linear-gradient(45deg, #0080ff, #00ffff);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+        }
+
+        @keyframes logoGlow {
+            from {
+                box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            }
+            to {
+                box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+            }
         }
 
         /* Main Content */
         .main-content {
-            margin-top: 100px;
+            /* Aumentando margin-top para acomodar o novo layout do header */
+            margin-top: 140px;
             padding: 2rem;
-            max-width: 1400px;
+            max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -346,6 +373,35 @@
 
         /* Responsividade */
         @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+            
+            .nav-container {
+                /* Mantendo layout vertical centralizado no mobile */
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+            
+            .logo {
+                /* Tamanho otimizado da logo para mobile */
+                width: 60px;
+                height: 60px;
+            }
+            
+            .back-btn {
+                /* Ajustando botão para mobile */
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .main-content {
+                /* Ajustando espaçamento do conteúdo principal para mobile */
+                margin-top: 120px;
+                padding: 1rem;
+            }
+
             .page-title {
                 font-size: 2rem;
             }
@@ -388,7 +444,7 @@
     <header class="header">
         <nav class="nav-container">
             <div class="logo">
-                <img src="https://i.ibb.co/W4j1VK9n/logo-hack-hype-Photoroom.png" alt="HACK HYPE Logo">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/logo-hack-hype-Photoroom%282%29-vc1HA65D8XLfpPYsX23Ii3UFKDXPaD.png" alt="HACK HYPE Logo">
             </div>
             <a href="index.html" class="back-btn">← Voltar ao Início</a>
         </nav>
@@ -537,7 +593,7 @@
                 description: "Gerador de imagens da OpenAI com alta qualidade",
                 fullDescription: "DALL-E 3 é o mais avançado gerador de imagens da OpenAI, capaz de criar imagens fotorrealistas a partir de descrições textuais.",
                 features: ["Imagens fotorrealistas", "Controle preciso", "Integração ChatGPT", "Múltiplos estilos"],
-                link: "https://openai.com/dall-e-3" // Link oficial do DALL-E 3
+                link: "https://openai.com/dall-e-3" // Link oficial do D-E 3
             },
             {
                 name: "Midjourney",
