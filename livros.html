@@ -28,7 +28,7 @@
             background: rgb(8 78 120 / 32%);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 1rem;
+            padding: 1rem 2rem;
             border-bottom: 2px solid #00ffff;
             animation: slideInFromTop 0.8s ease-out;
         }
@@ -45,7 +45,7 @@
         }
 
         .nav-container {
-            /* Centralizando logo e reorganizando layout */
+            /* Alterando layout para centralizar logo e posicionar botão embaixo */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -56,7 +56,7 @@
         }
 
         .logo {
-            /* Ajustando logo para aparecer completa */
+            /* Ajustando tamanho da logo para melhor visualização */
             width: 80px;
             height: 80px;
             border-radius: 15px;
@@ -66,14 +66,14 @@
             font-weight: bold;
             font-size: 1.2rem;
             color: #000;
-            border: 3px solid #00ffff;
+            border: 4px solid #00ffff;
             animation: logoGlow 3s ease-in-out infinite alternate;
         }
 
         .logo img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Mudando de cover para contain para mostrar logo completa */
+            object-fit: cover;
             border-radius: 10px;
             filter: drop-shadow(0 0 3px #00ffff);
         }
@@ -101,7 +101,8 @@
 
         /* Main Content */
         .main-content {
-            margin-top: 100px;
+            /* Aumentando margin-top para acomodar o novo layout do header */
+            margin-top: 140px;
             padding: 2rem;
             max-width: 1200px;
             margin-left: auto;
@@ -308,26 +309,26 @@
             }
             
             .logo {
-                /* Tamanho otimizado para mobile */
+                /* Tamanho otimizado da logo para mobile */
                 width: 60px;
                 height: 60px;
-                border: 2px solid #00ffff;
-            }
-            
-            .back-btn {
-                /* Botão menor para mobile */
-                padding: 0.8rem 1.5rem;
                 font-size: 0.9rem;
             }
             
-            /* Improved mobile content spacing */
+            .back-btn {
+                /* Ajustando botão para mobile */
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            /* Ajustando espaçamento do conteúdo principal para mobile */
             .main-content {
-                margin-top: 90px; /* Reduced from 120px for better space utilization */
+                margin-top: 120px;
                 padding: 1rem;
             }
             
             .page-title {
-                font-size: 1.8rem; /* Better mobile font size */
+                font-size: 2rem;
                 margin-bottom: 2rem;
                 line-height: 1.2;
             }
@@ -413,8 +414,14 @@
             }
             
             .logo {
-                width: 70px; /* modificando tamanho da logo tablet */
+                /* Tamanho da logo para tablet */
+                width: 70px;
                 height: 70px;
+            }
+            
+            /* Ajustando margin-top para tablet */
+            .main-content {
+                margin-top: 130px;
             }
         }
         
@@ -429,11 +436,8 @@
         
         /* Enhanced extra small screens support */
         @media (max-width: 480px) {
-            .header {
-                padding: 0.8rem;
-            }
-            
             .nav-container {
+                padding: 0;
                 gap: 0.6rem;
             }
             
@@ -441,35 +445,20 @@
                 /* Logo ainda menor para telas muito pequenas */
                 width: 50px;
                 height: 50px;
-                border: 2px solid #00ffff;
             }
             
             .back-btn {
-                padding: 0.6rem 1.2rem;
+                padding: 0.5rem 1rem;
                 font-size: 0.8rem;
             }
             
-            .books-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.8rem;
-            }
-            
-            .book-cover {
-                width: 80px;
-                height: 110px;
-            }
-            
-            .book-title {
-                font-size: 0.8rem;
-                line-height: 1.2;
-            }
-            
-            .book-author {
-                font-size: 0.7rem;
+            /* Ajustando espaçamento para telas muito pequenas */
+            .main-content {
+                margin-top: 110px;
             }
             
             .page-title {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
             
             .modal-content {
