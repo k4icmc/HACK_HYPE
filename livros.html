@@ -28,7 +28,7 @@
             background: rgb(8 78 120 / 32%);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 1rem 2rem;
+            padding: 1rem;
             border-bottom: 2px solid #00ffff;
             animation: slideInFromTop 0.8s ease-out;
         }
@@ -45,17 +45,20 @@
         }
 
         .nav-container {
+            /* Centralizando logo e reorganizando layout */
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             max-width: 1100px;
             margin: 0 auto;
+            gap: 1rem;
         }
 
         .logo {
-            /* Padronizando logo com configurações exatas do curiosidades.html */
-            width: 100px; /* modificando tamanho da logo */
-            height: 100px; /* modificando tamanho da logo */
+            /* Ajustando logo para aparecer completa */
+            width: 80px;
+            height: 80px;
             border-radius: 15px;
             display: flex;
             align-items: center;
@@ -63,27 +66,16 @@
             font-weight: bold;
             font-size: 1.2rem;
             color: #000;
-            border: 4px solid #00ffff; /* modificando tamanho da borda da logo */
+            border: 3px solid #00ffff;
             animation: logoGlow 3s ease-in-out infinite alternate;
         }
 
         .logo img {
             width: 100%;
-            height: 110px;
-            object-fit: cover;
+            height: 100%;
+            object-fit: contain; /* Mudando de cover para contain para mostrar logo completa */
             border-radius: 10px;
             filter: drop-shadow(0 0 3px #00ffff);
-        }
-
-        @keyframes logoGlow {
-            from {
-                box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-                transform: scale(1);
-            }
-            to {
-                box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
-                transform: scale(1.05);
-            }
         }
 
         .back-btn {
@@ -147,7 +139,7 @@
         .book-card:hover {
             transform: translateY(-10px);
             border-color: #00ffff;
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .book-cover {
@@ -305,27 +297,27 @@
         /* Responsive */
         @media (max-width: 768px) {
             .header {
-                padding: 0.8rem 1rem;
+                padding: 1rem;
             }
             
             .nav-container {
-                /* Mantendo layout horizontal consistente com curiosidades.html */
-                flex-direction: row;
-                justify-content: space-between;
+                /* Mantendo layout vertical centralizado no mobile */
+                flex-direction: column;
                 align-items: center;
+                gap: 0.8rem;
             }
             
             .logo {
-                /* Tamanho mobile padronizado com curiosidades.html */
-                width: 50px;
-                height: 50px;
-                font-size: 0.9rem;
+                /* Tamanho otimizado para mobile */
+                width: 60px;
+                height: 60px;
+                border: 2px solid #00ffff;
             }
             
             .back-btn {
-                /* Padding mobile padronizado com curiosidades.html */
-                padding: 0.6rem 1rem;
-                font-size: 0.8rem;
+                /* Botão menor para mobile */
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
             }
             
             /* Improved mobile content spacing */
@@ -437,17 +429,23 @@
         
         /* Enhanced extra small screens support */
         @media (max-width: 480px) {
+            .header {
+                padding: 0.8rem;
+            }
+            
             .nav-container {
-                padding: 0;
+                gap: 0.6rem;
             }
             
             .logo {
-                width: 35px;
-                height: 35px;
+                /* Logo ainda menor para telas muito pequenas */
+                width: 50px;
+                height: 50px;
+                border: 2px solid #00ffff;
             }
             
             .back-btn {
-                padding: 0.5rem 0.8rem;
+                padding: 0.6rem 1.2rem;
                 font-size: 0.8rem;
             }
             
@@ -492,7 +490,7 @@
         <nav class="nav-container">
             <!-- Padronizando estrutura do header com curiosidades.html -->
             <div class="logo">
-                <img src="https://i.ibb.co/W4j1VK9n/logo-hack-hype-Photoroom.png" alt="HACK HYPE Logo">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/logo-hack-hype-Photoroom%282%29-vc1HA65D8XLfpPYsX23Ii3UFKDXPaD.png" alt="HACK HYPE Logo">
                 <!-- COMENTÁRIO: Para alterar a logo, substitua o link acima -->
             </div>
             <a href="index.html" class="back-btn">← Voltar ao Início</a>
@@ -527,7 +525,7 @@
             <!-- Livro 3 -->
             <div class="book-card" onclick="openModal('book3')">
                 <div class="book-cover">
-                    <img src="https://m.media-amazon.com/images/I/61hewOW+8zL._UF1000,1000_QL80_.jpg" alt="Capa do livro"> <!-- Para trocar capa: substitua o link aqui -->
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/61hewOW%2B8zL._UF1000%2C1000_QL80_%281%29-GOtqTkBVzcJvYSRD2unRVjk0UHP4z8.jpg" alt="Capa do livro"> <!-- Para trocar capa: substitua o link aqui -->
                 </div>
                 <div class="book-title">O Programador Pragmático</div> <!-- Para trocar título: substitua o nome aqui -->
                 <div class="book-author">Andrew Hunt e David Thomas</div> <!-- Para trocar autor: substitua o nome aqui -->
@@ -537,7 +535,7 @@
             <div class="book-card" onclick="openModal('book4')">
                 <div class="book-cover">
                     <!-- Para trocar capa: substitua o link aqui -->
-                    <img src="https://s3.novatec.com.br/capas-ampliadas/capa-ampliada-9788575225639.jpg" alt="Capa do livro"> <!-- link da capa -->
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/capa-ampliada-9788575225639%282%29-on3JD1kagTddMCMNXtjxjQdjyg13AT.jpg" alt="Capa do livro"> <!-- link da capa -->
                 </div>
                 <!-- Para trocar título: substitua o nome aqui -->
                 <div class="book-title">Entendendo Algoritmos: Um Guia Ilustrado para Programadores</div> <!-- nome do livro -->
@@ -548,7 +546,7 @@
             <!-- Livro 5 -->
             <div class="book-card" onclick="openModal('book5')">
                 <div class="book-cover">
-                    <img src="https://img2.doceru.com/image/m/8c5cs55.png" alt="Capa do livro"> <!-- Para trocar capa: substitua o link aqui -->
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/8c5cs55%282%29-Hxgo4zHIPDamZ0ErdIuJJPyms78U89.png" alt="Capa do livro"> <!-- Para trocar capa: substitua o link aqui -->
                 </div>
                 <div class="book-title">Programação em Banco de Dados</div> <!-- Para trocar título: substitua o nome aqui -->
                 <div class="book-author">Sergio Eduardo Nunes, Ricardo Alexandre Plati Moura</div> <!-- Para trocar autor: substitua o nome aqui -->
@@ -557,7 +555,7 @@
             <!-- Livro 6 -->
             <div class="book-card" onclick="openModal('book6')">
                 <div class="book-cover">
-                    <img src="https://m.media-amazon.com/images/I/91rF+VvvFJL._UF350,350_QL50_.jpg" alt="Capa do livro"> <!-- Para trocar capa: substitua o link aqui -->
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/91rF%2BVvvFJL._UF350%2C350_QL50_%281%29-J37YsHusTdS5TQFl1A5vudGRFNYlrQ.jpg" alt="Capa do livro"> <!-- Para trocar capa: substitua o link aqui -->
                 </div>
                 <div class="book-title">Linux a Bíblia</div> <!-- Para trocar título: substitua o nome aqui -->
                 <div class="book-author">Christopher Negus</div> <!-- Para trocar autor: substitua o nome aqui -->
@@ -566,7 +564,7 @@
             <!-- Livro 7 -->
             <div class="book-card" onclick="openModal('book7')">
                 <div class="book-cover">
-                    <img src="https://m.media-amazon.com/images/I/61AsAsgdzUL.jpg" alt="Capa do livro"> <!-- Para trocar capa: substitua o link aqui -->
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/61AsAsgdzUL%282%29-0z5P8KnIVmuIDb1OHibaVcBQMe7XwN.jpg" alt="Capa do livro"> <!-- Para trocar capa: substitua o link aqui -->
                 </div>
                 <div class="book-title">Algoritmos e Estruturas de Dados</div> <!-- Para trocar título: substitua o nome aqui -->
                 <div class="book-author">Thomas Cormen</div> <!-- Para trocar autor: substitua o nome aqui -->
