@@ -173,12 +173,17 @@
             text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
         }
 
-        /* Videos Layout - Changed from grid to vertical list with video left, info right */
+        /* Videos Layout - Fixed to always be vertical list regardless of zoom */
         .videos-container {
+            /* Forçando layout vertical em lista para todos os tamanhos de tela */
             display: flex;
             flex-direction: column;
             gap: 3rem;
             margin-bottom: 3rem;
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .video-item {
@@ -190,9 +195,11 @@
             backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
+            /* Layout horizontal fixo: vídeo à esquerda, info à direita */
             display: flex;
             gap: 2rem;
             align-items: flex-start;
+            width: 100%;
         }
 
         .video-item::before {
@@ -220,11 +227,13 @@
 
         /* Video player section on the left */
         .video-player {
+            /* Tamanho fixo do player para manter consistência */
             flex: 0 0 400px;
             height: 225px;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            min-width: 400px; /* Garantindo largura mínima */
         }
 
         .video-player iframe {
@@ -235,10 +244,12 @@
 
         /* Video info section on the right */
         .video-info {
+            /* Flex 1 para ocupar espaço restante */
             flex: 1;
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            min-width: 0; /* Permitindo quebra de texto */
         }
 
         .video-header {
@@ -302,7 +313,7 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        /* Responsive - Updated responsive design for horizontal layout */
+        /* Responsive - Updated for consistent list layout */
         @media (max-width: 768px) {
             .header {
                 padding: 0.8rem 1rem;
@@ -348,20 +359,18 @@
             }
             
             .video-item {
+                /* Layout vertical no mobile para melhor visualização */
                 flex-direction: column;
                 gap: 1.5rem;
                 padding: 1.5rem;
             }
             
             .video-player {
+                /* Player ocupa largura total no mobile */
                 flex: none;
                 width: 100%;
                 height: 200px;
-            }
-            
-            .video-header {
-                flex-direction: row;
-                align-items: center;
+                min-width: unset;
             }
             
             .video-title {
@@ -376,8 +385,10 @@
         
         @media (min-width: 769px) and (max-width: 1024px) {
             .video-player {
+                /* Ajuste para tablets mantendo layout horizontal */
                 flex: 0 0 350px;
                 height: 200px;
+                min-width: 350px;
             }
             
             .video-title {
@@ -385,11 +396,19 @@
             }
         }
         
+        /* Removendo media query que forçava layout em colunas no desktop */
         @media (min-width: 1025px) {
             .videos-container {
-                /* Enforced exactly 3 columns on desktop */
-                flex-direction: row;
-                gap: 2rem;
+                /* Mantendo layout vertical em lista sempre */
+                flex-direction: column;
+                gap: 3rem;
+            }
+            
+            .video-player {
+                /* Tamanho padrão para desktop */
+                flex: 0 0 400px;
+                height: 225px;
+                min-width: 400px;
             }
         }
     </style>
@@ -402,7 +421,7 @@
     <header class="header">
         <div class="nav-container">
             <div class="logo">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/logo-hack-hype-Photoroom%282%29-vc1HA65D8XLfpPYsX23Ii3UFKDXPaD.png" alt="HACK HYPE Logo">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/logo-hack-hype-Photoroom%282%29-d9Bg0W7LuBEmV6eEAN7LLlLwGoFNiT.png" alt="HACK HYPE Logo">
                 <!-- COMENTÁRIO: Para alterar a logo, substitua o link acima -->
             </div>
             <a href="index.html" class="back-btn">← Voltar ao Painel</a>
@@ -432,13 +451,13 @@
             <!-- Vídeo 1 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/XqZsoesa55" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/XqZsoesa55w" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Fundamentos de Algoritmos e Estruturas de Dados</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/kaic%282%29-uLGQTJZPdaL7lgXSoxLdk79mW8jYtM.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/kaic%282%29-s8anZRhGU82FcdWbzkJ4BsYXBRLRpA.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -455,13 +474,13 @@
             <!-- Vídeo 2 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/kJQP7kiw5F" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/kJQP7kiw5Fk" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Introdução ao Desenvolvimento Web Moderno</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/mical%282%29-ksR5hRyTNM7vnkNwaQo1QRZX3C4FbQ.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/mical%282%29-ikJsbzYmoPyygfRGcvtQP4PvTksGRg.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -480,13 +499,13 @@
             <!-- Vídeo 3 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/e_04ZrNroT" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/e_04ZrNroTo" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Banco de Dados: Do Básico ao Avançado</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/icaro%282%29-Q2zDNVMEK7VxE684XKEgF8gQi7PaT0.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/icaro%282%29-lIHSkNeFs8dmeGyDTli1kQGLa1Qazv.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -505,13 +524,13 @@
             <!-- Vídeo 4 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/WRVsOCh907" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/WRVsOCh907o" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Metodologias Ágeis na Prática</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/rian-camilo%282%29-Dhh4sWJAnlYqfWpv1rEMqdcpp9Or66.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/rian-camilo%282%29-dCJXOFQkissPLn2kjfMErxCL4fufPq.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -529,13 +548,13 @@
             <!-- Vídeo 5 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/JGwWNGJdvx" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/JGwWNGJdvx8" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Programação Orientada a Objetos com Java</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/enzo%282%29-aGPUnS0ahv1XWQgnbPXDyuEwltCbnV.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/enzo%282%29-hWw2JrtRnwoOYIOrgA2yKzheBbPWc1.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -553,13 +572,13 @@
             <!-- Vídeo 6 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/RgKAFK5djS" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/RgKAFK5djSk" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Segurança da Informação e Ethical Hacking</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/RYAN-GABRIEL-RODRIGUES-FLORENCIO%282%29-awXbbRDsiSnNkmGQfpYbgIbHzE4oW2.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/RYAN-GABRIEL-RODRIGUES-FLORENCIO%282%29-nIGb9JQkXQJyzR8T3eFQrrgnHN5a82.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -577,13 +596,13 @@
             <!-- Vídeo 7 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/F4tHL8reNC" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/F4tHL8reNCs" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Análise de Dados com Python e Machine Learning</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Matheus-Alvarenga-de-Amaral%282%29-NSQReT6476GhgY0FBSXfBpcs0PGYHd.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Matheus-Alvarenga-de-Amaral%282%29-Xwk37Ha4D8ohQWJNJPPqdvhXK3GLCh.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -601,13 +620,13 @@
             <!-- Vídeo 8 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/9bZkp7q19f" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/9bZkp7q19f0" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">UX/UI Design para Desenvolvedores</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Arthur-Andr-de-Mendon-a-Assun-o%282%29-hF1rJjwhjGpynzLL5wnI7cyTuVX1EF.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Arthur-Andr-de-Mendon-a-Assun-o%282%29-Pc0Exw5FGVmLDt9JfTz0O2g0CmikB3.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -625,13 +644,13 @@
             <!-- Vídeo 9 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/2n4enj6YMn" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/2n4enj6YMnw" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Desenvolvimento Mobile com React Native</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Fernando-Henrique-de-Amorim%282%29-ky5y3mmiW8qGXRwDmELOdb8znpbkXb.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Fernando-Henrique-de-Amorim%282%29-sOmuByNFxJEekDYpDuw7OXJyaQFnJ5.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -649,13 +668,13 @@
             <!-- Vídeo 10 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/pRpeEdMmmQ" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/pRpeEdMmmQ0" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Arquitetura de Software e Design Patterns</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Kau-Vin-cius-Cardoso-Guimar-es%282%29-FDMUqCVM5npPfpyX4Ep7SZvZJvcw7x.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Kau-Vin-cius-Cardoso-Guimar-es%282%29-IZRVSbnpW1UYNHOHixplSIze2kFBSy.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -676,13 +695,13 @@
             <!-- Vídeo 11 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/CevxZvSJLk" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/CevxZvSJLk8" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">DevOps e Cloud Computing</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/BRENO-ARAUJO-OLIVEIRA-JACINTHO%282%29-muMdvabI2d4aVDnI2tcsnrtGvnQnwd.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/BRENO-ARAUJO-OLIVEIRA-JACINTHO%282%29-sGDsgH2XHqAhjbre4RVHlvstURRJy1.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -700,13 +719,13 @@
             <!-- Vídeo 12 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/lp-EO5I60K" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/lp-EO5I60KA" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">APIs RESTful e Microserviços</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/MARCO-ARNOLD%282%29-whrre1xNy2IOxX2lWUo07RuhcVlqL9.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/MARCO-ARNOLD%282%29-qw8ni5W0pC7MzB1vZ2QFj3BlTmY5ZO.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -724,7 +743,7 @@
             <!-- Vídeo 13 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/FzG4uDgje3" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/FzG4uDgje3M" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
@@ -748,13 +767,13 @@
             <!-- Vídeo 14 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/0KSOMA3QBU" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/0KSOMA3QBU0" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Inteligência Artificial e Deep Learning</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/kaic%282%29-uLGQTJZPdaL7lgXSoxLdk79mW8jYtM.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/kaic%282%29-s8anZRhGU82FcdWbzkJ4BsYXBRLRpA.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -772,13 +791,13 @@
             <!-- Vídeo 15 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/c_a3IQFX6v" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/c_a3IQFX6v0" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Blockchain e Criptomoedas</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/mical%282%29-ksR5hRyTNM7vnkNwaQo1QRZX3C4FbQ.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/mical%282%29-ikJsbzYmoPyygfRGcvtQP4PvTksGRg.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -796,13 +815,13 @@
             <!-- Vídeo 16 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/YqeW9_5kUR" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/YqeW9_5kURI" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Testes Automatizados e TDD</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/icaro%282%29-Q2zDNVMEK7VxE684XKEgF8gQi7PaT0.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/icaro%282%29-lIHSkNeFs8dmeGyDTli1kQGLa1Qazv.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -820,13 +839,13 @@
             <!-- Vídeo 17 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/NUsoVlDFqZ" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/NUsoVlDFqZg" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Big Data e Analytics</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/rian-camilo%282%29-Dhh4sWJAnlYqfWpv1rEMqdcpp9Or66.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/rian-camilo%282%29-dCJXOFQkissPLn2kjfMErxCL4fufPq.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -844,13 +863,13 @@
             <!-- Vídeo 18 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/aJOTlE1K90" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/aJOTlE1K90k" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Internet das Coisas (IoT)</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/enzo%282%29-aGPUnS0ahv1XWQgnbPXDyuEwltCbnV.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/enzo%282%29-hWw2JrtRnwoOYIOrgA2yKzheBbPWc1.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -868,13 +887,13 @@
             <!-- Vídeo 19 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/RBumgq5yVr" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/RBumgq5yVrA" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Carreira em Tecnologia: Dicas e Estratégias</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/RYAN-GABRIEL-RODRIGUES-FLORENCIO%282%29-awXbbRDsiSnNkmGQfpYbgIbHzE4oW2.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/RYAN-GABRIEL-RODRIGUES-FLORENCIO%282%29-nIGb9JQkXQJyzR8T3eFQrrgnHN5a82.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
@@ -892,13 +911,13 @@
             <!-- Vídeo 20 -->
             <div class="video-item">
                 <div class="video-player">
-                    <iframe src="https://www.youtube.com/embed/2Vv-BfVoq4" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
+                    <iframe src="https://www.youtube.com/embed/2Vv-BfVoq4g" allowfullscreen></iframe> <!--adicione aqui o link do video no youtube-->
                 </div>
                 <div class="video-info">
                     <div class="video-header">
                         <div class="video-title">Sistemas Distribuídos e Escalabilidade</div> <!--adicione aqui o titulo do video-->
                         <div class="creator-avatar">
-                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Matheus-Alvarenga-de-Amaral%282%29-NSQReT6476GhgY0FBSXfBpcs0PGYHd.jpg"> <!--imagem do criador do video-->
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/Matheus-Alvarenga-de-Amaral%282%29-Xwk37Ha4D8ohQWJNJPPqdvhXK3GLCh.jpg"> <!--imagem do criador do video-->
                         </div>
                     </div>
                     <!--descrição do video⬇️-->
