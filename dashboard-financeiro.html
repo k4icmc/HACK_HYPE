@@ -786,7 +786,7 @@
 
      Header 
     <header class="header">
-        <img src="https://i.ibb.co/W4j1VK9n/logo-hack-hype-Photoroom.png" alt="Logo Hack Hype" class="logo">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/logo-hack-hype-Photoroom%287%29-A93AodOOcZQHNUOTCW08aSVejo8x9t.png" alt="Logo Hack Hype" class="logo">
         <a href="index.html" class="back-button">← Voltar ao Início</a>
     </header>
 
@@ -1307,6 +1307,11 @@
             const info = document.getElementById('popupInfo');
             const stats = document.getElementById('popupStats');
             
+            // Limpa o conteúdo anterior do popup-content para evitar duplicação
+            const popupContent = document.querySelector('.popup-content');
+            popupContent.querySelectorAll('div:not(.popup-close, .popup-title, .popup-info, .popup-stats)').forEach(el => el.remove());
+
+
             let data;
             if (type === 'currency') {
                 data = currencyInfo[id];
@@ -1357,6 +1362,104 @@
                         <div class="stat-value">${data.maxSupply}</div>
                     </div>
                 `;
+                
+                const buyButtonsSection = document.createElement('div');
+                buyButtonsSection.style.cssText = `
+                    margin-top: 2rem;
+                    padding-top: 1.5rem;
+                    border-top: 2px solid rgba(0, 255, 255, 0.3);
+                `;
+                
+                buyButtonsSection.innerHTML = `
+                    <h4 style="color: #00ffff; text-align: center; margin-bottom: 1rem; font-size: 1.2rem;">
+                        💰 Comprar ${data.name}
+                    </h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <a href="https://www.binance.com/pt-BR/trade/${id.toUpperCase()}_USDT" 
+                           target="_blank" 
+                           style="background: linear-gradient(45deg, #f0b90b, #f8d12f); 
+                                  color: #000; 
+                                  padding: 0.8rem 1rem; 
+                                  border-radius: 10px; 
+                                  text-decoration: none; 
+                                  text-align: center; 
+                                  font-weight: bold; 
+                                  transition: all 0.3s ease;
+                                  box-shadow: 0 4px 15px rgba(240, 185, 11, 0.3);
+                                  display: flex;
+                                  align-items: center;
+                                  justify-content: center;
+                                  gap: 0.5rem;"
+                           onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(240, 185, 11, 0.5)'"
+                           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(240, 185, 11, 0.3)'">
+                            🟡 Binance
+                        </a>
+                        <a href="https://www.coinbase.com/pt-br/price/${id}" 
+                           target="_blank" 
+                           style="background: linear-gradient(45deg, #0052ff, #1652f0); 
+                                  color: #fff; 
+                                  padding: 0.8rem 1rem; 
+                                  border-radius: 10px; 
+                                  text-decoration: none; 
+                                  text-align: center; 
+                                  font-weight: bold; 
+                                  transition: all 0.3s ease;
+                                  box-shadow: 0 4px 15px rgba(0, 82, 255, 0.3);
+                                  display: flex;
+                                  align-items: center;
+                                  justify-content: center;
+                                  gap: 0.5rem;"
+                           onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(0, 82, 255, 0.5)'"
+                           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 82, 255, 0.3)'">
+                            🔵 Coinbase
+                        </a>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                        <a href="https://www.kraken.com/pt-br/prices/${id}" 
+                           target="_blank" 
+                           style="background: linear-gradient(45deg, #5741d9, #7c4dff); 
+                                  color: #fff; 
+                                  padding: 0.8rem 1rem; 
+                                  border-radius: 10px; 
+                                  text-decoration: none; 
+                                  text-align: center; 
+                                  font-weight: bold; 
+                                  transition: all 0.3s ease;
+                                  box-shadow: 0 4px 15px rgba(87, 65, 217, 0.3);
+                                  display: flex;
+                                  align-items: center;
+                                  justify-content: center;
+                                  gap: 0.5rem;"
+                           onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(87, 65, 217, 0.5)'"
+                           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(87, 65, 217, 0.3)'">
+                            🟣 Kraken
+                        </a>
+                        <a href="https://www.kucoin.com/pt/trade/${id.toUpperCase()}-USDT" 
+                           target="_blank" 
+                           style="background: linear-gradient(45deg, #24ae8f, #2dd4bf); 
+                                  color: #fff; 
+                                  padding: 0.8rem 1rem; 
+                                  border-radius: 10px; 
+                                  text-decoration: none; 
+                                  text-align: center; 
+                                  font-weight: bold; 
+                                  transition: all 0.3s ease;
+                                  box-shadow: 0 4px 15px rgba(36, 174, 143, 0.3);
+                                  display: flex;
+                                  align-items: center;
+                                  justify-content: center;
+                                  gap: 0.5rem;"
+                           onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(36, 174, 143, 0.5)'"
+                           onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(36, 174, 143, 0.3)'">
+                            🟢 KuCoin
+                        </a>
+                    </div>
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: #cccccc;">
+                        ⚠️ Sempre faça sua própria pesquisa antes de investir. Criptomoedas são investimentos de alto risco.
+                    </p>
+                `;
+                
+                document.querySelector('.popup-content').appendChild(buyButtonsSection);
             }
             
             overlay.classList.add('active');
