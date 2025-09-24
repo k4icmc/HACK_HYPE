@@ -2293,14 +2293,20 @@
         }
 
         function togglePresentationVideo() {
-            const video = document.querySelector('.presentation-video');
-            if (video) {
-                video.style.display = video.style.display === 'none' ? 'block' : 'none';
-                if (video.style.display !== 'none') {
-                    setTimeout(initializeDragVideo, 100);
-                }
-            }
+    const video = document.querySelector('.presentation-video');
+    if (video) {
+        // Verifica se é mobile e ajusta o comportamento
+        if (window.innerWidth <= 768) {
+            video.style.display = 'none';
+        } else {
+            video.style.display = video.style.display === 'none' ? 'block' : 'none';
         }
+        
+        if (video.style.display !== 'none') {
+            setTimeout(initializeDragVideo, 100);
+        }
+    }
+}
 
         document.addEventListener('DOMContentLoaded', function() {
             initializeDragVideo();
@@ -2308,5 +2314,6 @@
     </script>
 </body>
 </html>
+
 
 
