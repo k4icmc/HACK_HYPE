@@ -1239,16 +1239,20 @@
             color: white;
             border: none;
             border-radius: 50%;
-            /* Aumentando o tamanho do botão para facilitar o clique */
+            /* Aumentando tamanho do botão de 25px para 50px (2x maior) */
             width: 50px;
             height: 50px;
             cursor: pointer;
-            /* Aumentando o tamanho da fonte proporcionalmente */
+            /* Aumentando fonte de 16px para 24px para acompanhar o tamanho */
             font-size: 24px;
             font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: center;
+            /* Adicionando padding para aumentar área clicável */
+            padding: 10px;
+            /* Adicionando z-index para garantir que fique acima de outros elementos */
+            z-index: 1000;
         }
 
         .video-close-btn:hover {
