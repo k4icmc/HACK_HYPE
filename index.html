@@ -1233,8 +1233,8 @@
 
         .video-close-btn {
             position: absolute;
-            top: -15px;
-            right: -27px;
+            top: -10px;
+            right: -10px;
             background: #ff0040;
             color: white;
             border: none;
@@ -1253,11 +1253,20 @@
             padding: 10px;
             /* Adicionando z-index para garantir que fique acima de outros elementos */
             z-index: 1000;
+            /* Removendo todas as animações e transições */
+            /* Adicionando box-sizing para garantir dimensões corretas */
+            box-sizing: border-box;
+            /* Garantindo que o botão seja clicável exatamente onde aparece */
+            pointer-events: auto;
+            /* Removendo padding que pode causar desalinhamento */
+            padding: 0;
+            /* Centralizando o conteúdo perfeitamente */
+            line-height: 1;
         }
 
         .video-close-btn:hover {
             background: #ff3366;
-            /* Removendo transform scale */
+            /* Removendo todas as animações hover */
         }
 
         /* Responsividade para o vídeo de apresentação */
@@ -1267,11 +1276,30 @@
                 position: absolute;
                 top: 120px;
                 left: 20px;
+                /* Garantindo que o container não interfira no posicionamento do botão */
+                overflow: visible;
             }
             
             .presentation-video iframe {
                 width: 250px;
                 height: 140px;
+            }
+
+            /* Ajustando especificamente o botão no mobile */
+            .video-close-btn {
+                /* Posicionamento mais preciso no mobile */
+                top: -15px;
+                right: -15px;
+                /* Mantendo tamanho consistente */
+                width: 50px;
+                height: 50px;
+                /* Garantindo que o touch target seja exato */
+                touch-action: manipulation;
+                /* Removendo qualquer margem ou padding que possa desalinhar */
+                margin: 0;
+                padding: 0;
+                /* Garantindo z-index alto para mobile */
+                z-index: 1002;
             }
         }
 
@@ -1345,10 +1373,10 @@
         /* Responsividade para mobile */
         @media (max-width: 768px) {
             .presentation-video {
-                /* Removendo posicionamento duplicado e mantendo consistência */
                 position: absolute;
                 top: 120px;
                 left: 20px;
+                /* Removendo posicionamento duplicado */
             }
             
             .presentation-video iframe {
@@ -2304,6 +2332,3 @@
     </script>
 </body>
 </html>
-
-
-
