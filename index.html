@@ -1212,8 +1212,7 @@
             border-radius: 10px;
             padding: 10px;
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-            transition: all 0.3s ease;
-            /* Adicionando cursor pointer para indicar que é arrastável */
+            /* Removendo transições e animações */
             cursor: move;
             user-select: none;
             -webkit-user-select: none;
@@ -1223,13 +1222,12 @@
 
         .presentation-video:hover {
             box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
-            transform: scale(1.02);
+            /* Removendo transform scale */
         }
 
         /* Adicionando estado de arraste */
         .presentation-video.dragging {
-            transition: none;
-            transform: scale(1.05);
+            /* Removendo transições e transforms */
             box-shadow: 0 0 40px rgba(0, 255, 255, 0.7);
         }
 
@@ -1253,7 +1251,7 @@
 
         .video-close-btn:hover {
             background: #ff3366;
-            transform: scale(1.1);
+            /* Removendo transform scale */
         }
 
         /* Responsividade para o vídeo de apresentação */
@@ -1372,7 +1370,7 @@
         <nav class="nav-container">
             <!-- Replaced text logo with image logo -->
             <div class="logo">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/logo-hack-hype-Photoroom%283%29%281%29%281%29-g5FXt4jA05OzGl8agWBizysKVFL8MO.png" alt="HACK HYPE Logo">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/logo-hack-hype-Photoroom%283%29%281%29%281%29%282%29%281%29%281%29%281%29-TeLPV3cK1QwHKUOtLSkwPG1VYqteuu.png" alt="HACK HYPE Logo">
                 <!-- COMENTÁRIO: Para alterar a logo, substitua o link acima -->
             </div>
             <ul class="nav-menu">
@@ -1386,7 +1384,7 @@
     </header>
 
     <!-- Video movido para o lado esquerdo -->
-    <!--
+    
     <div class="presentation-video">
         <iframe width="300" height="200" 
                 src="https://www.youtube.com/embed/SEU_VIDEO_ID_AQUI" 
@@ -1397,7 +1395,6 @@
         </iframe>
         <button class="video-close-btn" onclick="togglePresentationVideo()">×</button>
     </div>
-    -->
     
     
 
@@ -1486,13 +1483,12 @@
                         <span class="shortcut-icon">📈</span>
                         <div class="shortcut-title">Dashboard Financeiro</div>
                         <div class="shortcut-desc">Cotações em tempo real de moedas e criptomoedas</div>
-
-                        <!--adicionando botão para marketplace-->
-                         <a href="marketplace.html" class="shortcut-card">
-                        <span class="shortcut-icon">🛒</span>
-                        <div class="shortcut-title">marketplace tech</div>
-                        <div class="shortcut-desc">melhores recomendações de produtos tech</div>
                     </a>
+                     <!-- Adicionando botão para o Marketplace Tech -->
+                    <a href="marketplace.html" class="shortcut-card">
+                        <span class="shortcut-icon">🛒</span>
+                        <div class="shortcut-title">Marketplace Tech</div>
+                        <div class="shortcut-desc">60+ produtos de tecnologia com preços em tempo real</div>
                     </a>
                 </div>
             </div>
@@ -1760,7 +1756,7 @@
                 <!-- MEMBRO 1: KAIC MARÇAL -->
                 <div class="team-popup-member" onclick="openMemberModal('kaic')">
                     <div class="team-popup-photo">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/kaic%283%29%281%29%281%29-fkB53ywL6hSnxie12aWUD5fX2vDmCr.jpg" alt="Kaic Marçal">  <!-- Para trocar imagem: substitua o link aqui -->
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/kaic%283%29%281%29%281%29%282%29%281%29%281%29%281%29-C4NHFlfGF8YekVJKouCO8FnQYmj6yy.jpg" alt="Kaic Marçal">  <!-- Para trocar imagem: substitua o link aqui -->
                     </div>
                     <div class="team-popup-name">KAIC MARÇAL</div>
                     <div class="team-popup-role">Desenvolvedor Full-Stack</div>
@@ -1769,7 +1765,7 @@
                 <!-- MEMBRO 2: MICAL LEITE -->
                 <div class="team-popup-member" onclick="openMemberModal('mical')">
                     <div class="team-popup-photo">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/mical%283%29%281%29%281%29-Ap5CCJMcIwYvoFdmhFhRVkDczdBb4k.jpg" alt="Mical Leite">  <!-- Para trocar imagem: substitua o link aqui -->
+                        <img src="https://blob.v0.app/vgsLjMF/mical.jpg" alt="Mical Leite">  <!-- Para trocar imagem: substitua o link aqui -->
                     </div>
                     <div class="team-popup-name">MICAL LEITE</div>
                     <div class="team-popup-role">Gerente de Projetos</div>
@@ -1778,7 +1774,7 @@
                 <!-- MEMBRO 3: ICARO RIBEIRO BORGES FONSECA -->
                 <div class="team-popup-member" onclick="openMemberModal('icaro')">
                     <div class="team-popup-photo">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/icaro%283%29%281%29%281%29-Lxy7RpKdRPzCLDU3Bljj4IxK4NpWb7.jpg" alt="Icaro Ribeiro Borges Fonseca">  <!-- Para trocar imagem: substitua o link aqui -->
+                        <img src="https://blob.v0.app/Rp1VDzRQ/icaro.jpg" alt="Icaro Ribeiro Borges Fonseca">  <!-- Para trocar imagem: substitua o link aqui -->
                     </div>
                     <div class="team-popup-name">ICARO RIBEIRO</div>
                     <div class="team-popup-role">Desenvolvedor Front-End</div>
@@ -1787,7 +1783,7 @@
                 <!-- MEMBRO 4: RIHAN CAMILO -->
                 <div class="team-popup-member" onclick="openMemberModal('rihan')">
                     <div class="team-popup-photo">
-                        <img src="https://i.ibb.co/zhbBWq1M/rian-camilo.jpg" alt="Rihan Camilo">  <!-- Para trocar imagem: substitua o link aqui -->
+                        <img src="https://blob.v0.app/zhbBWq1M/rian-camilo.jpg" alt="Rihan Camilo">  <!-- Para trocar imagem: substitua o link aqui -->
                     </div>
                     <div class="team-popup-name">RIHAN CAMILO</div>
                     <div class="team-popup-role">Analista de Sistenmas</div>
@@ -1796,7 +1792,7 @@
                 <!-- MEMBRO 5: ENZO VIEIRA -->
                 <div class="team-popup-member" onclick="openMemberModal('enzo')">
                     <div class="team-popup-photo">
-                        <img src="https://i.ibb.co/k69Nks26/enzo.jpg" >
+                        <img src="https://blob.v0.app/k69Nks26/enzo.jpg" >
                     </div>
                     <div class="team-popup-name">ENZO VIEIRA</div>
                     <div class="team-popup-role">Desenvolvedor Back-end</div>
@@ -1805,7 +1801,7 @@
                 <!-- MEMBRO 6: RYAN GABRIEL RODRIGUES FLORENCIO -->
                 <div class="team-popup-member" onclick="openMemberModal('ryan')">
                     <div class="team-popup-photo">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/RYAN-GABRIEL-RODRIGUES-FLORENCIO%283%29%281%29%281%29-PgMn3EiCwgSYiPHWb06HOpkOo6hGqx.jpg" alt="Ryan Gabriel Rodrigues Florencio">  <!-- Adicionada foto real do Ryan -->
+                        <img src="https://blob.v0.app/YBy3RpKc/RYAN-GABRIEL-RODRIGUES-FLORENCIO.jpg" alt="Ryan Gabriel Rodrigues Florencio">  <!-- Adicionada foto real do Ryan -->
                     </div>
                     <div class="team-popup-name">RYAN GABRIEL</div>  <!-- Nome real do membro -->
                     <div class="team-popup-role">Desenvolvedor Back-end</div>  <!-- Função definida -->
@@ -1814,7 +1810,7 @@
                 <!-- MEMBRO 7: MATHEUS ALVARENGA DE AMARAL -->
                 <div class="team-popup-member" onclick="openMemberModal('matheus')">
                     <div class="team-popup-photo">
-                        <img src="https://i.ibb.co/GQXpB3PP/Matheus-Alvarenga-de-Amaral.jpg" alt="Matheus Alvarenga de Amaral">  <!-- Adicionada foto real do Matheus -->
+                        <img src="https://blob.v0.app/GQXpB3PP/Matheus-Alvarenga-de-Amaral.jpg" alt="Matheus Alvarenga de Amaral">  <!-- Adicionada foto real do Matheus -->
                     </div>
                     <div class="team-popup-name">MATHEUS ALVARENGA</div>  <!-- Nome real do membro -->
                     <div class="team-popup-role">Analista de Dados</div>  <!-- Função definida -->
@@ -1823,7 +1819,7 @@
                 <!-- MEMBRO 8: ARTHUR ANDRÉ DE MENDONÇA ASSUNÇÃO -->
                 <div class="team-popup-member" onclick="openMemberModal('arthur')">
                     <div class="team-popup-photo">
-                        <img src="https://i.ibb.co/4g2H5tmv/Arthur-Andr-de-Mendon-a-Assun-o.jpg" alt="Arthur André">  <!-- Adicionada foto real do Arthur -->
+                        <img src="https://blob.v0.app/4g2H5tmv/Arthur-Andr-de-Mendon-a-Assun-o.jpg" alt="Arthur André">  <!-- Adicionada foto real do Arthur -->
                     </div>
                     <div class="team-popup-name">ARTHUR ANDRÉ</div>  <!-- Nome real do membro -->
                     <div class="team-popup-role">Designer UX/UI</div>  <!-- Função definida -->
@@ -1832,7 +1828,7 @@
                 <!-- MEMBRO 9: FERNANDO HENRIQUE DE AMORIM -->
                 <div class="team-popup-member" onclick="openMemberModal('fernando')">
                     <div class="team-popup-photo">
-                        <img src="https://i.ibb.co/1fwgKgR4/Fernando-Henrique-de-Amorim.jpg" alt="Fernando Henrique de Amorim">  <!-- Adicionada foto real do Fernando -->
+                        <img src="https://blob.v0.app/1fwgKgR4/Fernando-Henrique-de-Amorim.jpg" alt="Fernando Henrique de Amorim">  <!-- Adicionada foto real do Fernando -->
                     </div>
                     <div class="team-popup-name">FERNANDO HENRIQUE</div>  <!-- Nome real do membro -->
                     <div class="team-popup-role">Desenvolvedor Mobile</div>  <!-- Função definida -->
@@ -1841,7 +1837,7 @@
                 <!-- MEMBRO 10: KAUÃ VINÍCIUS CARDOSO GUIMARÃES -->
                 <div class="team-popup-member" onclick="openMemberModal('kaua')">
                     <div class="team-popup-photo">
-                        <img src="https://i.ibb.co/zTKGnw3n/Kau-Vin-cius-Cardoso-Guimar-es.jpg" alt="Kauã Vinícius Cardoso Guimarães">  <!-- Adicionada foto real do Kauã -->
+                        <img src="https://blob.v0.app/zTKGnw3n/Kau-Vin-cius-Cardoso-Guimar-es.jpg" alt="Kauã Vinícius Cardoso Guimarães">  <!-- Adicionada foto real do Kauã -->
                     </div>
                     <div class="team-popup-name">KAUÃ VINÍCIUS</div>  <!-- Nome real do membro -->
                     <div class="team-popup-role">Especialista em Segurança</div>  <!-- Função definida -->
@@ -1850,7 +1846,7 @@
                 <!-- MEMBRO 11: BRENO ARAUJO OLIVEIRA JACINTHO -->
                 <div class="team-popup-member" onclick="openMemberModal('breno')">
                     <div class="team-popup-photo">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/BRENO-ARAUJO-OLIVEIRA-JACINTHO%283%29%281%29%281%29-UKdIvoX7ReJXL8n39Sy5i5Pfzto1SO.jpg" alt="Breno Araujo Oliveira Jacintho">  <!-- Adicionada foto real do Breno -->
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/BRENO-ARAUJO-OLIVEIRA-JACINTHO%283%29%281%29%281%29%283%29%281%29%281%29%281%29-ahMkkjxurYfZHJFKVniXVHBpOikUF9.jpg" alt="Breno Araujo Oliveira Jacintho">  <!-- Adicionada foto real do Breno -->
                     </div>
                     <div class="team-popup-name">BRENO ARAUJO</div>  <!-- Nome real do membro -->
                     <div class="team-popup-role">Administrador de Banco de Dados</div>  <!-- Função definida -->
@@ -1859,7 +1855,7 @@
                 <!-- MEMBRO 12: MARCO ANTONIO ARNOLD -->
                 <div class="team-popup-member" onclick="openMemberModal('marco')">
                     <div class="team-popup-photo">
-                        <img src="https://i.ibb.co/0p70SKCL/MARCO-ARNOLD.jpg" alt="Marco Antonio Arnold">  <!-- Added Marco's real photo -->
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/MARCO-ARNOLD%286%29%281%29%281%29%281%29-o6Q4JYzWcgXF3l33jfJKX28JhcYiVR.jpg" alt="Marco Antonio Arnold">  <!-- Added Marco's real photo -->
                     </div>
                     <div class="team-popup-name">MARCO ANTONIO ARNOLD</div>  <!-- Added Marco's real name -->
                     <div class="team-popup-role">Desenvolvedor Frontend</div>  <!-- Added Marco's role -->
@@ -1868,7 +1864,7 @@
                 <!-- MEMBRO 13: LUIZ EDUARDO PAULINO DE ALMEIDA -->
                 <div class="team-popup-member" onclick="openMemberModal('luiz')">
                     <div class="team-popup-photo">
-                        <img src="https://i.ibb.co/RTkk6v8b/LUIZ-EDUARDI-DE-ALMEIDA.jpg" alt="Luiz Eduardo Paulino de Almeida">  <!-- Added Luiz's real photo -->
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/LUIZ-EDUARDI-DE-ALMEIDA%288%29%281%29%281%29%281%29-kuVDK9ZL3jNmx9jQ0VgooVrQUqgRvt.jpg" alt="Luiz Eduardo Paulino de Almeida">  <!-- Added Luiz's real photo -->
                     </div>
                     <div class="team-popup-name">LUIZ EDUARDO</div>  <!-- Added Luiz's real name -->
                     <div class="team-popup-role">Analista de Sistemas</div>  <!-- Added Luiz's role -->
@@ -1961,18 +1957,6 @@
             popup.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
-
-        /* Removendo função que fazia o vídeo acompanhar o scroll */
-        // function updateVideoPosition() {
-        //     const video = document.querySelector('.presentation-video');
-        //     if (video && window.innerWidth > 768) {
-        //         const scrollY = window.scrollY;
-        //         const newTop = Math.max(120, 120 + scrollY * 0.1);
-        //         video.style.top = newTop + 'px';
-        //     }
-        // }
-
-        // window.addEventListener('scroll', updateVideoPosition);
 
         // Close team popup when clicking outside
         window.addEventListener('click', function(event) {
@@ -2294,20 +2278,19 @@
         }
 
         function togglePresentationVideo() {
-    const video = document.querySelector('.presentation-video');
-    if (video) {
-        // Verifica se é mobile e ajusta o comportamento
-        if (window.innerWidth <= 768) {
-            video.style.display = 'none';
-        } else {
-            video.style.display = video.style.display === 'none' ? 'block' : 'none';
+            const video = document.querySelector('.presentation-video');
+            if (video) {
+                // Pausar o vídeo antes de fechar
+                const iframe = video.querySelector('iframe');
+                if (iframe) {
+                    const src = iframe.src;
+                    iframe.src = '';
+                    iframe.src = src; // Recarrega o iframe, pausando o vídeo
+                }
+                // Fechar completamente o vídeo
+                video.style.display = 'none';
+            }
         }
-        
-        if (video.style.display !== 'none') {
-            setTimeout(initializeDragVideo, 100);
-        }
-    }
-}
 
         document.addEventListener('DOMContentLoaded', function() {
             initializeDragVideo();
@@ -2315,7 +2298,3 @@
     </script>
 </body>
 </html>
-
-
-
-
