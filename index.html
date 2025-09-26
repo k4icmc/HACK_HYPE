@@ -260,6 +260,42 @@
             animation: fadeInUp 0.5s ease 0.2s both;
         }
 
+        /* Vídeo de Apresentação */
+        .presentation-video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .video-title {
+            color: #00ffff;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+
         /* Nosso Time Section */
         .team-section {
             margin: 4rem 0;
@@ -824,6 +860,24 @@
                 margin: 1rem 0 2rem 0;
             }
 
+            .presentation-video-container {
+                margin: 30px auto;
+                padding: 0 15px;
+            }
+            
+            .video-title {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+            }
+            
+            .about-section {
+                margin-top: 40px;
+            }
+
+            .presentation-video-container .video-wrapper {
+                padding-bottom: 56.25%;
+            }
+
             .shortcuts-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
@@ -887,6 +941,15 @@
             
             .hero h1 {
                 font-size: 1.8rem;
+            }
+
+            .presentation-video-container {
+                margin: 20px auto;
+                padding: 0 10px;
+            }
+            
+            .video-title {
+                font-size: 1.2rem;
             }
         }
         
@@ -1350,7 +1413,8 @@
 
         /* Adicionando estilos para seção sobre integrada */
         .about-section {
-            margin-top: 2rem;
+            margin-top: 60px;
+            clear: both;
             padding: 2rem;
             background: rgba(0, 255, 255, 0.1);
             border-radius: 15px;
@@ -1372,20 +1436,9 @@
 
         /* Responsividade para mobile */
         @media (max-width: 768px) {
-            .presentation-video {
-                position: absolute;
-                top: 120px;
-                left: 20px;
-                /* Removendo posicionamento duplicado */
-            }
-            
-            .presentation-video iframe {
-                width: 250px;
-                height: 140px;
-            }
-
             .about-section {
                 padding: 1rem;
+                margin-top: 40px;
             }
 
             .about-section h2 {
@@ -1417,21 +1470,6 @@
         </nav>
     </header>
 
-    <!-- Video movido para o lado esquerdo -->
-    
-    <div class="presentation-video">
-        <iframe width="300" height="200" 
-                src="https://www.youtube.com/embed/SEU_VIDEO_ID_AQUI" 
-                title="Apresentação do Site HACK HYPE" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-        </iframe>
-        <button class="video-close-btn" onclick="togglePresentationVideo()">×</button>
-    </div>
-    
-    
-
     <!-- Main Content -->
     <main class="main-content">
         <!-- Home Section -->
@@ -1440,6 +1478,35 @@
             <div class="hero-content">
                 <h1 class="hero-title">HACK HYPE</h1>
                 <p class="hero-subtitle">Hackeando Limites, Hypando Possibilidades!</p>
+                
+
+
+
+
+
+
+
+                <!-- Adicionando vídeo de apresentação centralizado -->
+                <div class="presentation-video-container">
+                    
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/dQw4w9WgXc" 
+                            title="Vídeo de Apresentação"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
                 
                 <!-- Adicionando seção sobre integrada abaixo da frase principal -->
                 <div class="about-section">
@@ -2117,7 +2184,7 @@
             arthur: {
                 name: "ARTHUR ANDRÉ DE MENDONÇA ASSUNÇÃO",  // Dados reais do Arthur
                 role: "Designer UX/UI",
-                photo: "https://i.ibb.co/4g2H5tmv/Arthur-Andr-de-Mendon-a-Assun-o.jpg",
+                photo: "https://i.ibb.co/4g2H5tmv/Arthur-Andr-de-Mendon-a-Assun-o.jp",
                 description: "Designer focado em experiência do usuário e interfaces intuitivas, criando soluções visuais impactantes.",
                 skills: ["Figma", "Adobe XD", "Prototipagem"]
             },
@@ -2152,7 +2219,7 @@
             luiz: {
                 name: "LUIZ EDUARDO PAULINO DE ALMEIDA",  // Added Luiz's data
                 role: "Analista de Sistemas",
-                photo: "https://i.ibb.co/RTkk6v8b/LUIZ-EDUARDI-DE-ALMEIDA.jpg",
+                photo: "hhttps://i.ibb.co/RTkk6v8b/LUIZ-EDUARDI-DE-ALMEIDA.jpg",
                 description: "Analista de sistemas com experiência em levantamento de requisitos e modelagem de processos. Especialista em documentação técnica e análise de negócios.",
                 skills: ["Análise de Requisitos", "UML", "SQL", "Business Intelligence", "Documentação Técnica", "Processos de Negócio"]
             }
@@ -2211,123 +2278,6 @@
                     closeTeamPopup();
                 }
             }
-        });
-
-        /* Adicionando funcionalidade de arrastar e soltar para o vídeo */
-        let isDragging = false;
-        let dragOffset = { x: 0, y: 0 };
-        let currentVideo = null;
-
-        function initializeDragVideo() {
-            const video = document.querySelector('.presentation-video');
-            if (!video) return;
-
-            // Eventos de mouse para desktop
-            video.addEventListener('mousedown', startDrag);
-            document.addEventListener('mousemove', drag);
-            document.addEventListener('mouseup', endDrag);
-
-            // Eventos de touch para mobile
-            video.addEventListener('touchstart', startDragTouch, { passive: false });
-            document.addEventListener('touchmove', dragTouch, { passive: false });
-            document.addEventListener('touchend', endDragTouch);
-        }
-
-        function startDrag(e) {
-            isDragging = true;
-            currentVideo = e.target.closest('.presentation-video');
-            if (!currentVideo) return;
-
-            currentVideo.classList.add('dragging');
-            const rect = currentVideo.getBoundingClientRect();
-            dragOffset.x = e.clientX - rect.left;
-            dragOffset.y = e.clientY - rect.top;
-            e.preventDefault();
-        }
-
-        function drag(e) {
-            if (!isDragging || !currentVideo) return;
-
-            const x = e.clientX - dragOffset.x;
-            const y = e.clientY - dragOffset.y;
-
-            // Limitando o movimento dentro da viewport
-            const maxX = window.innerWidth - currentVideo.offsetWidth;
-            const maxY = window.innerHeight - currentVideo.offsetHeight;
-
-            const constrainedX = Math.max(0, Math.min(x, maxX));
-            const constrainedY = Math.max(0, Math.min(y, maxY));
-
-            currentVideo.style.left = constrainedX + 'px';
-            currentVideo.style.top = constrainedY + 'px';
-        }
-
-        function endDrag() {
-            if (currentVideo) {
-                currentVideo.classList.remove('dragging');
-            }
-            isDragging = false;
-            currentVideo = null;
-        }
-
-        // Funções para touch (mobile)
-        function startDragTouch(e) {
-            isDragging = true;
-            currentVideo = e.target.closest('.presentation-video');
-            if (!currentVideo) return;
-
-            currentVideo.classList.add('dragging');
-            const rect = currentVideo.getBoundingClientRect();
-            const touch = e.touches[0];
-            dragOffset.x = touch.clientX - rect.left;
-            dragOffset.y = touch.clientY - rect.top;
-            e.preventDefault();
-        }
-
-        function dragTouch(e) {
-            if (!isDragging || !currentVideo) return;
-
-            const touch = e.touches[0];
-            const x = touch.clientX - dragOffset.x;
-            const y = touch.clientY - dragOffset.y;
-
-            // Limitando o movimento dentro da viewport
-            const maxX = window.innerWidth - currentVideo.offsetWidth;
-            const maxY = window.innerHeight - currentVideo.offsetHeight;
-
-            const constrainedX = Math.max(0, Math.min(x, maxX));
-            const constrainedY = Math.max(0, Math.min(y, maxY));
-
-            currentVideo.style.left = constrainedX + 'px';
-            currentVideo.style.top = constrainedY + 'px';
-            e.preventDefault();
-        }
-
-        function endDragTouch() {
-            if (currentVideo) {
-                currentVideo.classList.remove('dragging');
-            }
-            isDragging = false;
-            currentVideo = null;
-        }
-
-        function togglePresentationVideo() {
-            const video = document.querySelector('.presentation-video');
-            if (video) {
-                // Pausar o vídeo antes de fechar
-                const iframe = video.querySelector('iframe');
-                if (iframe) {
-                    const src = iframe.src;
-                    iframe.src = '';
-                    iframe.src = src; // Recarrega o iframe, pausando o vídeo
-                }
-                // Fechar completamente o vídeo
-                video.style.display = 'none';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeDragVideo();
         });
     </script>
 </body>
